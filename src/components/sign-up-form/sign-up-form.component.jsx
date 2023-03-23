@@ -28,7 +28,7 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
@@ -41,10 +41,10 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user);
       resetFormFields();
     } catch (error) {
-      if (error.code == "auth/email-already-in-use") {
+      if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user, email already in use!");
       }
-      if (error.code == "auth/weak-password") {
+      if (error.code === "auth/weak-password") {
         alert("Cannot create user, password should be atleast 6 characters!");
       }
       console.log("User could not be created!", error);
